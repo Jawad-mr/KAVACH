@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KAVACH: control layer for AI agents</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header>
+  <div class="brand"><h1>KAVACH</h1><p>Every action your AI agent takes passes through here first.</p></div>
+  <div class="counts" aria-live="polite">
+    <div class="c allow"><b id="c-allow">0</b>Allowed</div><div class="c modify"><b id="c-modify">0</b>Modified</div>
+    <div class="c hold"><b id="c-hold">0</b>Held</div><div class="c block"><b id="c-block">0</b>Blocked</div>
+  </div>
+  <div class="ctl"><span id="status" class="pill ok">Agent running</span><button id="kill" class="danger">Kill switch</button></div>
+</header>
+<main>
+  <aside class="panel"><h2>Run the agent</h2><p class="hint">Aria is a support agent with access to email, CRM, payments and the order database.</p>
+    <div id="scenarios"></div>
+    <button id="suite" class="primary">Run red-team suite</button><p id="suite-result" class="hint"></p></aside>
+  <section class="panel feedpanel"><h2>Live agent actions</h2><div id="feed"><p class="empty">Pick a scenario on the left to watch KAVACH check each action before it runs.</p></div></section>
+  <aside class="panel"><h2>Rules</h2><div id="rules"></div>
+    <label class="slider">Hold anything with a risk score of <b id="hv">60</b> or more<input id="hold" type="range" min="30" max="95" value="60"></label>
+    <form id="ruleform"><label for="rtext">Add a rule in plain English</label><input id="rtext" placeholder="Hold payments above 20000" autocomplete="off"><button class="primary">Add rule</button><p id="rerr" class="hint"></p></form></aside>
+</main>
+<section class="panel audit"><div class="audithead"><h2>Audit log (each entry is sealed to the one before it)</h2>
+  <div><button id="verify">Verify log</button><button id="tamper" class="danger">Edit an old entry</button></div></div>
+  <p id="vres" class="vres">Nothing checked yet.</p><div id="chain"></div></section>
+<script src="app.js"></script></body></html>
